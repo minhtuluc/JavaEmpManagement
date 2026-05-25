@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a73e8"/>
+      <stop offset="100%" stop-color="#0d47a1"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="512" height="512" rx="96" ry="96" fill="url(#bg)"/>
+  <!-- Decorative circle (subtle pattern) -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#ffffff20" stroke-width="8"/>
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#ffffff15" stroke-width="4"/>
+  <!-- People icon - Person 1 (left) -->
+  <circle cx="200" cy="180" r="52" fill="#ffffff" stroke="none"/>
+  <ellipse cx="200" cy="340" rx="72" ry="80" fill="#ffffff" stroke="none"/>
+  <!-- People icon - Person 2 (right, slightly behind) -->
+  <circle cx="330" cy="200" r="48" fill="#e8f0fe" stroke="none"/>
+  <ellipse cx="330" cy="350" rx="65" ry="72" fill="#e8f0fe" stroke="none"/>
+  <!-- Connecting line between them (teamwork) -->
+  <path d="M256 220 Q280 240 290 270" fill="none" stroke="#ffffff60" stroke-width="6" stroke-linecap="round"/>
+  <path d="M256 220 Q232 240 222 270" fill="none" stroke="#ffffff60" stroke-width="6" stroke-linecap="round"/>
+  <!-- Checkmark badge -->
+  <circle cx="370" cy="170" r="40" fill="#34a853" stroke="#ffffff" stroke-width="5"/>
+  <path d="M352 170 l12 12 28-28" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
