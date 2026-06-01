@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class dbConnection {
-    private static final String BASE_URL = "jdbc:mysql://localhost:3306";
+    private static final String BASE_URL = "jdbc:mysql://127.0.0.1:3306";
     private static final String DB_NAME = "quanlynhansu";
     private static final String USER = "root";
     private static final String PASSWORD = "";

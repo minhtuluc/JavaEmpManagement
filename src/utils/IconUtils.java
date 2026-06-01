@@ -6,7 +6,6 @@ import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import com.formdev.flatlaf.FlatLightLaf;
 
 /**
  * Vector icon renderer for Swing UI components.
@@ -386,70 +385,9 @@ public class IconUtils {
 
     public static void setupLookAndFeel() {
         try {
-            FlatLightLaf.setup();
-            
-            // Custom rounded corners properties for FlatLaf
-            UIManager.put("Button.arc", 8);
-            UIManager.put("Component.arc", 8);
-            UIManager.put("TextComponent.arc", 8);
-
-            Color primary = new Color(0x1A73E8);
-            Color primaryDark = new Color(0x1557B0);
-            Color primaryLight = new Color(0xE8F0FE);
-            Color bgLight = new Color(0xF5F7FA);
-            Color surface = new Color(0xFFFFFF);
-            Color textPrimary = new Color(0x202124);
-            Color borderColor = new Color(0xDADCE0);
-
-            UIManager.put("control", surface);
-            UIManager.put("text", textPrimary);
-            UIManager.put("textForeground", textPrimary);
-            UIManager.put("textHighlight", primaryLight);
-            UIManager.put("textHighlightText", primary);
-            UIManager.put("nimbusBase", primary);
-            UIManager.put("nimbusBlueGrey", new Color(0xD2E3FC));
-            UIManager.put("nimbusLightBackground", bgLight);
-            UIManager.put("nimbusSelectionBackground", primaryLight);
-            UIManager.put("nimbusSelection", primary);
-            UIManager.put("nimbusFocus", new Color(0x1A73E880, true));
-
-            // Table styling
-            UIManager.put("Table.background", surface);
-            UIManager.put("Table.alternateRowColor", new Color(0xF8F9FA));
-            UIManager.put("Table.selectionBackground", new Color(0xE8F0FE));
-            UIManager.put("Table.selectionForeground", textPrimary);
-            UIManager.put("Table.gridColor", borderColor);
-            UIManager.put("TableHeader.background", new Color(0xF1F3F4));
-
-            // Button styling
-            UIManager.put("Button.font", new Font("Segoe UI", Font.PLAIN, 13));
-            UIManager.put("Button.background", primary);
-            UIManager.put("Button.foreground", Color.WHITE);
-            UIManager.put("Button.select", primaryDark);
-            UIManager.put("Button.textShiftOffset", 0);
-
-            // Text fields
-            UIManager.put("TextField.font", new Font("Segoe UI", Font.PLAIN, 13));
-            UIManager.put("TextField.background", surface);
-            UIManager.put("TextField.foreground", textPrimary);
-            UIManager.put("TextField.caretForeground", primary);
-
-            // Labels
-            UIManager.put("Label.font", new Font("Segoe UI", Font.PLAIN, 13));
-            UIManager.put("Label.foreground", textPrimary);
-
-            // Password field
-            UIManager.put("PasswordField.font", new Font("Segoe UI", Font.PLAIN, 13));
-
-            // Combo box
-            UIManager.put("ComboBox.font", new Font("Segoe UI", Font.PLAIN, 13));
-
-            // Option pane
-            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.PLAIN, 13));
-            UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.PLAIN, 13));
-
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            System.err.println("Could not set FlatLaf LookAndFeel: " + e.getMessage());
+            System.err.println("Could not set LookAndFeel: " + e.getMessage());
         }
     }
 

@@ -148,7 +148,7 @@ public class statisticsDialog extends JDialog {
         chart.setPreferredSize(new Dimension(500, 180));
         chart.setMaximumSize(new Dimension(500, 180));
         chart.setBackground(Color.WHITE);
-        chart.setBorder(BorderFactory.createLineBorder(new Color(0xDADCE0), 1, true));
+        chart.setBorder(BorderFactory.createLineBorder(new Color(0xDADCE0), 1));
         content.add(chart);
 
         // Close button
@@ -158,10 +158,8 @@ public class statisticsDialog extends JDialog {
         btnClose.setForeground(Color.WHITE);
         btnClose.setFocusPainted(false);
         btnClose.setBorderPainted(false);
-        btnClose.putClientProperty("JButton.buttonType", "roundRect");
         btnClose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnClose.setMargin(new Insets(8, 24, 8, 24));
-        btnClose.putClientProperty("JButton.minimumWidth", 120);
         btnClose.setPreferredSize(new Dimension(btnClose.getPreferredSize().width, 36));
         btnClose.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnClose.addActionListener(e -> dispose());
@@ -180,7 +178,7 @@ public class statisticsDialog extends JDialog {
         JPanel card = new JPanel(new BorderLayout(0, 4));
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(0xDADCE0), 1, true),
+                BorderFactory.createLineBorder(new Color(0xDADCE0), 1),
                 BorderFactory.createEmptyBorder(10, 12, 10, 12)));
 
         JLabel titleLabel = new JLabel(title);
@@ -233,7 +231,7 @@ public class statisticsDialog extends JDialog {
                 int y = pad + chartH - barH;
 
                 g2.setColor(colors[i]);
-                g2.fill(new RoundRectangle2D.Float(x, y, barWidth, barH, 4, 4));
+                g2.fill(new java.awt.geom.Rectangle2D.Float(x, y, barWidth, barH));
 
                 g2.setColor(new Color(0x202124));
                 g2.setFont(new Font("Segoe UI", Font.PLAIN, 10));

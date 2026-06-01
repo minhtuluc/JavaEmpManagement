@@ -229,10 +229,8 @@ public class employeeDialog extends JDialog {
         btnSave.setForeground(Color.WHITE);
         btnSave.setFocusPainted(false);
         btnSave.setBorderPainted(false);
-        btnSave.putClientProperty("JButton.buttonType", "roundRect");
         btnSave.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnSave.setMargin(new Insets(8, 24, 8, 24));
-        btnSave.putClientProperty("JButton.minimumWidth", 120);
         btnSave.setPreferredSize(new Dimension(btnSave.getPreferredSize().width, 36));
 
         JButton btnCancel = new JButton("Hủy bỏ");
@@ -241,10 +239,8 @@ public class employeeDialog extends JDialog {
         btnCancel.setForeground(new Color(0x202124));
         btnCancel.setFocusPainted(false);
         btnCancel.setBorderPainted(false);
-        btnCancel.putClientProperty("JButton.buttonType", "roundRect");
         btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnCancel.setMargin(new Insets(8, 24, 8, 24));
-        btnCancel.putClientProperty("JButton.minimumWidth", 120);
         btnCancel.setPreferredSize(new Dimension(btnCancel.getPreferredSize().width, 36));
 
         btnPanel.add(btnSave);
@@ -280,7 +276,7 @@ public class employeeDialog extends JDialog {
         field.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         field.setBackground(FIELD_BG);
         field.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(BORDER_COLOR, 1, true),
+                BorderFactory.createLineBorder(BORDER_COLOR, 1),
                 BorderFactory.createEmptyBorder(6, 8, 6, 8)));
         return field;
     }

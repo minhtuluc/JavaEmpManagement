@@ -45,7 +45,7 @@ public class loginView extends JFrame {
         JPanel card = new JPanel(new GridBagLayout());
         card.setBackground(CARD_BG);
         card.setBorder(BorderFactory.createCompoundBorder(
-            new ShadowBorder(4, new Color(0, 0, 0, 30)),
+            BorderFactory.createLineBorder(FIELD_BORDER, 1),
             BorderFactory.createEmptyBorder(40, 48, 40, 48)));
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -112,28 +112,11 @@ public class loginView extends JFrame {
         btnLogin.setBackground(BTN_BG);
         btnLogin.setForeground(BTN_TEXT);
         btnLogin.setFocusPainted(false);
-        btnLogin.setBorder(BorderFactory.createEmptyBorder(12, 36, 12, 36));
+        btnLogin.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(BTN_BG.darker(), 1),
+            BorderFactory.createEmptyBorder(12, 36, 12, 36)));
         btnLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnLogin.setOpaque(true);
-        btnLogin.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
-            @Override
-            public void paint(Graphics g, JComponent c) {
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                AbstractButton b = (AbstractButton) c;
-                ButtonModel m = b.getModel();
-                g2.setColor(m.isRollover() ? BTN_HOVER : BTN_BG);
-                g2.fill(new RoundRectangle2D.Float(0, 0, b.getWidth(), b.getHeight(), 8, 8));
-                super.paint(g2, c);
-                g2.dispose();
-            }
-        });
-        btnLogin.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) { btnLogin.repaint(); }
-            @Override
-            public void mouseExited(MouseEvent e)  { btnLogin.repaint(); }
-        });
         card.add(btnLogin, gbc);
 
         getRootPane().setDefaultButton(btnLogin);
@@ -149,69 +132,23 @@ public class loginView extends JFrame {
         field.setForeground(TEXT_PRIMARY);
         field.setBackground(CARD_BG);
         field.setBorder(BorderFactory.createCompoundBorder(
-            new RoundedBorder(FIELD_BORDER, 8),
+            BorderFactory.createLineBorder(FIELD_BORDER, 1),
             BorderFactory.createEmptyBorder(10, 12, 10, 12)));
         field.setCaretColor(FIELD_FOCUS);
         field.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
                 field.setBorder(BorderFactory.createCompoundBorder(
-                    new RoundedBorder(FIELD_FOCUS, 8),
+                    BorderFactory.createLineBorder(FIELD_FOCUS, 1),
                     BorderFactory.createEmptyBorder(10, 12, 10, 12)));
             }
             @Override
             public void focusLost(FocusEvent e) {
                 field.setBorder(BorderFactory.createCompoundBorder(
-                    new RoundedBorder(FIELD_BORDER, 8),
+                    BorderFactory.createLineBorder(FIELD_BORDER, 1),
                     BorderFactory.createEmptyBorder(10, 12, 10, 12)));
             }
         });
-    }
-
-    private static class RoundedBorder extends AbstractBorder {
-        private final Color color;
-        private final int radius;
-        RoundedBorder(Color color, int radius) {
-            this.color = color;
-            this.radius = radius;
-        }
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
-            Graphics2D g2 = (Graphics2D) g.create();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.setColor(color);
-            g2.setStroke(new BasicStroke(1f));
-            g2.draw(new RoundRectangle2D.Float(x, y, w - 1, h - 1, radius, radius));
-            g2.dispose();
-        }
-        @Override
-        public Insets getBorderInsets(Component c) { return new Insets(0, 0, 0, 0); }
-    }
-
-    private static class ShadowBorder extends AbstractBorder {
-        private final int shadowSize;
-        private final Color shadowColor;
-        ShadowBorder(int shadowSize, Color shadowColor) {
-            this.shadowSize = shadowSize;
-            this.shadowColor = shadowColor;
-        }
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
-            Graphics2D g2 = (Graphics2D) g.create();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            for (int i = 0; i < shadowSize; i++) {
-                g2.setColor(new Color(shadowColor.getRed(), shadowColor.getGreen(),
-                    shadowColor.getBlue(), Math.max(0, shadowColor.getAlpha() - i * 6)));
-                int s = i + 1;
-                g2.draw(new RoundRectangle2D.Float(x + s, y + s, w - s * 2 - 1, h - s * 2 - 1, 10, 10));
-            }
-            g2.dispose();
-        }
-        @Override
-        public Insets getBorderInsets(Component c) {
-            int s = shadowSize + 1;
-            return new Insets(s, s, s, s);
-        }
     }
 
     private void doLogin() {

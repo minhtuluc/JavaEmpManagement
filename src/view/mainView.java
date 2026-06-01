@@ -58,7 +58,7 @@ public class mainView extends JFrame {
     }
 
     private void initComponents() {
-        boolean isDark = com.formdev.flatlaf.FlatLaf.isLafDark();
+        boolean isDark = false;
         
         // Main container panel with a clean background
         JPanel mainContainer = new JPanel(new BorderLayout());
@@ -104,9 +104,8 @@ public class mainView extends JFrame {
         rightInfo.add(Box.createHorizontalStrut(16));
 
         if (currentUser.getRole() == 1) {
-            JButton btnUserManage = createModernButton("Tài khoản", IconUtils.getPersonIcon(14), new Color(0xE8F0FE), PRIMARY);
+            JButton btnUserManage = createModernButton("Tài khoản", new Color(0xE8F0FE), PRIMARY);
             btnUserManage.setPreferredSize(new Dimension(100, 32));
-            btnUserManage.putClientProperty("JButton.minimumWidth", 100);
             btnUserManage.addActionListener(e -> {
                 userManagementDialog dialog = new userManagementDialog(mainView.this);
                 dialog.setVisible(true);
@@ -115,9 +114,8 @@ public class mainView extends JFrame {
             rightInfo.add(Box.createHorizontalStrut(6));
         }
 
-        JButton btnLogout = createModernButton("Đăng xuất", IconUtils.getLogoutIcon(14), new Color(0xFEE2E2), new Color(0xDC2626));
+        JButton btnLogout = createModernButton("Đăng xuất", new Color(0xFEE2E2), new Color(0xDC2626));
         btnLogout.setPreferredSize(new Dimension(105, 32));
-        btnLogout.putClientProperty("JButton.minimumWidth", 105);
         rightInfo.add(btnLogout);
         headerPanel.add(rightInfo, BorderLayout.EAST);
         
@@ -139,17 +137,14 @@ public class mainView extends JFrame {
         JPanel crudPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         crudPanel.setBackground(isDark ? new Color(0x1F2937) : Color.WHITE);
 
-        JButton btnAdd = createModernButton("Thêm mới", IconUtils.getAddIcon(14), PRIMARY, Color.WHITE);
-        JButton btnEdit = createModernButton("Chỉnh sửa", IconUtils.getEditIcon(14), new Color(0xDCFCE7), new Color(0x15803D));
-        JButton btnDelete = createModernButton("Xóa bỏ", IconUtils.getDeleteIcon(14), new Color(0xFEE2E2), new Color(0xB91C1C));
+        JButton btnAdd = createModernButton("Thêm mới", PRIMARY, Color.WHITE);
+        JButton btnEdit = createModernButton("Chỉnh sửa", new Color(0xDCFCE7), new Color(0x15803D));
+        JButton btnDelete = createModernButton("Xóa bỏ", new Color(0xFEE2E2), new Color(0xB91C1C));
 
         Dimension crudBtnSize = new Dimension(110, 32);
         btnAdd.setPreferredSize(crudBtnSize);
         btnEdit.setPreferredSize(crudBtnSize);
         btnDelete.setPreferredSize(crudBtnSize);
-        btnAdd.putClientProperty("JButton.minimumWidth", 110);
-        btnEdit.putClientProperty("JButton.minimumWidth", 110);
-        btnDelete.putClientProperty("JButton.minimumWidth", 110);
 
         if (currentUser.getRole() == 0) {
             btnAdd.setVisible(false);
@@ -168,35 +163,26 @@ public class mainView extends JFrame {
         filterPanel.setBackground(isDark ? new Color(0x1F2937) : Color.WHITE);
 
         txtSearch = new JTextField();
-        txtSearch.putClientProperty("JTextField.placeholderText", "Tìm theo mã, tên...");
-        txtSearch.putClientProperty("JTextField.showClearButton", true);
-        txtSearch.putClientProperty("JTextField.leadingIcon", IconUtils.getSearchIcon(14));
-        txtSearch.putClientProperty("JComponent.roundRect", true);
         txtSearch.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         txtSearch.setPreferredSize(new Dimension(170, 32));
 
-        JButton btnAdvancedSearch = createModernButton("Lọc nâng cao", null, new Color(0xF1F5F9), new Color(0x475569));
+        JButton btnAdvancedSearch = createModernButton("Lọc nâng cao", new Color(0xF1F5F9), new Color(0x475569));
         btnAdvancedSearch.setPreferredSize(new Dimension(105, 32));
-        btnAdvancedSearch.putClientProperty("JButton.minimumWidth", 105);
 
         cbxDepartmentFilter = new JComboBox<>();
-        cbxDepartmentFilter.putClientProperty("JComponent.roundRect", true);
         cbxDepartmentFilter.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cbxDepartmentFilter.setPreferredSize(new Dimension(125, 32));
         refreshDepartmentFilter();
 
-        JButton btnRefresh = createModernButton("Làm mới", IconUtils.getRefreshIcon(14), new Color(0xF1F5F9), new Color(0x475569));
+        JButton btnRefresh = createModernButton("Làm mới", new Color(0xF1F5F9), new Color(0x475569));
         btnRefresh.setPreferredSize(new Dimension(100, 32));
-        btnRefresh.putClientProperty("JButton.minimumWidth", 100);
         btnRefresh.setToolTipText("Làm mới danh sách");
 
-        JButton btnStats = createModernButton("Thống kê", IconUtils.getChartIcon(14), new Color(0xEFF6FF), new Color(0x1D4ED8));
+        JButton btnStats = createModernButton("Thống kê", new Color(0xEFF6FF), new Color(0x1D4ED8));
         btnStats.setPreferredSize(new Dimension(100, 32));
-        btnStats.putClientProperty("JButton.minimumWidth", 100);
         
-        JButton btnExport = createModernButton("Xuất CSV", IconUtils.getFileIcon(14), new Color(0xD1FAE5), new Color(0x065F46));
+        JButton btnExport = createModernButton("Xuất CSV", new Color(0xD1FAE5), new Color(0x065F46));
         btnExport.setPreferredSize(new Dimension(105, 32));
-        btnExport.putClientProperty("JButton.minimumWidth", 105);
 
         filterPanel.add(txtSearch);
         filterPanel.add(Box.createHorizontalStrut(6));
@@ -278,7 +264,7 @@ public class mainView extends JFrame {
         table.setRowSorter(sorter);
 
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1, true)); // Rounded border
+        scrollPane.setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1)); // Square border
         scrollPane.getViewport().setBackground(Color.WHITE);
         
         tableWrapper.add(scrollPane, BorderLayout.CENTER);
@@ -293,11 +279,11 @@ public class mainView extends JFrame {
         paginationBar.setBackground(isDark ? new Color(0x111827) : new Color(0xF8FAFC));
         paginationBar.setBorder(BorderFactory.createEmptyBorder(4, 0, 8, 0));
 
-        btnPrev = createModernButton("< Trước", null, new Color(0xF1F5F9), new Color(0x475569));
+        btnPrev = createModernButton("< Trước", new Color(0xF1F5F9), new Color(0x475569));
         btnPrev.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         btnPrev.setEnabled(false);
-
-        btnNext = createModernButton("Sau >", null, new Color(0xF1F5F9), new Color(0x475569));
+        
+        btnNext = createModernButton("Sau >", new Color(0xF1F5F9), new Color(0x475569));
         btnNext.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         btnNext.setEnabled(false);
 
@@ -489,14 +475,13 @@ public class mainView extends JFrame {
         }
     }
 
-    private JButton createModernButton(String text, Icon icon, Color bg, Color fg) {
-        JButton btn = new JButton(text, icon);
+    private JButton createModernButton(String text, Color bg, Color fg) {
+        JButton btn = new JButton(text);
         btn.setFont(new Font("Segoe UI", Font.BOLD, 12));
         btn.setBackground(bg);
         btn.setForeground(fg);
         btn.setFocusPainted(false);
         btn.setBorderPainted(false); // Make flat borderless
-        btn.putClientProperty("JButton.buttonType", "roundRect");
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(4, 10, 4, 10));
         

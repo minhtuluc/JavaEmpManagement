@@ -128,10 +128,8 @@ public class employeeDetailView extends JDialog {
         btnClose.setForeground(Color.WHITE);
         btnClose.setFocusPainted(false);
         btnClose.setBorderPainted(false);
-        btnClose.putClientProperty("JButton.buttonType", "roundRect");
         btnClose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnClose.setMargin(new Insets(8, 24, 8, 24));
-        btnClose.putClientProperty("JButton.minimumWidth", 120);
         btnClose.setPreferredSize(new Dimension(btnClose.getPreferredSize().width, 36));
         btnClose.addActionListener(e -> dispose());
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -166,7 +164,7 @@ public class employeeDetailView extends JDialog {
         val.setOpaque(true);
         val.setBackground(VALUE_BG);
         val.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(BORDER_COLOR, 1, true),
+                BorderFactory.createLineBorder(BORDER_COLOR, 1),
                 BorderFactory.createEmptyBorder(6, 8, 6, 8)));
         panel.add(val, gbc);
     }

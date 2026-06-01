@@ -103,7 +103,7 @@ public class userManagementDialog extends JDialog {
         header.setPreferredSize(new Dimension(header.getPreferredSize().width, 32));
 
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1, true));
+        scrollPane.setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1));
         scrollPane.getViewport().setBackground(Color.WHITE);
         contentPanel.add(scrollPane, BorderLayout.CENTER);
 
@@ -199,7 +199,6 @@ public class userManagementDialog extends JDialog {
         btn.setForeground(fg);
         btn.setFocusPainted(false);
         btn.setBorderPainted(false);
-        btn.putClientProperty("JButton.buttonType", "roundRect");
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(6, 16, 6, 16));
         btn.setPreferredSize(new Dimension(btn.getPreferredSize().width, 32));

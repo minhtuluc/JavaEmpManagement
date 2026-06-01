@@ -15,7 +15,7 @@ public class Main {
             public void run() {
                 if (dbConnection.getConnection() == null) {
                     JOptionPane.showMessageDialog(null,
-                        "Không thể kết nối đến MySQL tại localhost:3306.\n"
+                        "Không thể kết nối đến MySQL tại 127.0.0.1:3306.\n"
                         + "Hãy đảm bảo MySQL server đang chạy.\n\n"
                         + "Sau đó khởi động lại ứng dụng.",
                         "Lỗi kết nối CSDL",
